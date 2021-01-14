@@ -1,0 +1,47 @@
+{
+  "name": "tilde-sass",
+  "version": "1.0.0",
+  "description": "A SASS compiler with tilde (~) support for resolving node_modules path and supports new sass' syntax.",
+  "main": "dist/index.js",
+  "bin": {
+    "tilde-sass": "dist/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyymarco/tilde-sass.git"
+  },
+  "keywords": [
+    "sass",
+    "compiler",
+    "css",
+    "tilde",
+    "node",
+    "webpack",
+    "node_modules",
+    "dart"
+  ],
+  "author": "HeyMarco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heyymarco/tilde-sass/issues"
+  },
+  "homepage": "https://github.com/heyymarco/tilde-sass#readme",
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "fibers": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "path": "^0.12.7",
+    "sass": "^1.32.4"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.0.0",
+    "@types/fibers": "^3.1.0",
+    "@types/gulp": "^4.0.8",
+    "@types/gulp-sass": "^4.0.0",
+    "@types/sass": "^1.16.0"
+  }
+}

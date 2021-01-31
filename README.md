@@ -16,6 +16,8 @@ npm i tilde-sass --save-dev
 
 ## Usage
 
+Add this scripts into your **package.json**
+
 ```json
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

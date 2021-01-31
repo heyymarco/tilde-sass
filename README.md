@@ -5,7 +5,7 @@
 ## Features
 * Supports a tilde (~) prefix for resolving **node_modules** path.
 * Supports new sass' syntax like @use, @forward, sass modules, etc. Based on **dart-sass**.
-* Supports better compression using postcss, cssnano.
+* Supports better compression using postcss and cssnano.
 * Supports merge similar selectors using postcss-merge-selectors.
 
 ## Installation
@@ -20,7 +20,8 @@ npm i tilde-sass
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tilde-sass --file src/*.scss --outFile dist/ --mergeSelectors",
-    "compile-min": "tilde-sass --file src/*.scss --outFile dist/ --mergeSelectors --outputStyle compressed"
+    "compile-min": "tilde-sass --file src/*.scss --outFile dist/ --mergeSelectors --outputStyle compressed",
+    "compile-watch": "tilde-sass --file src/*.scss --outFile dist/ --mergeSelectors --outputStyle compressed --watch"
 }
 ```
 
@@ -91,17 +92,17 @@ For example, disabling the **calc compression** and **discardComments compressio
 ```
 
 ## Merging Similar Rules
-Do you hate using @extend for combining some rules together?
-An @extend doesn't work if you merge some rules with different **media queries**.
-Sometimes you must using @include instead of @extend.
+Do you hate using **@extend** for combining some rules together?
+An **@extend** doesn't work if you merge some rules with different **media queries**.
+Sometimes you must using **@include** instead of @extend.
 That makes our SASS code complicated and not consistent.
 
-The solution is using the @include only (forget the @extend)
-and then add --mergeSelectors on your command line.
+The solution is by using the **@include** only (forget the @extend)
+and then add --mergeSelectors at your command line.
 Our compiler will **merge** any rules having the same (or partially) properties for you!
 
 Example:
-```sass
+```scss
 $my-color: rgba(255, 0, 0, 1);
 
 .a {
@@ -137,7 +138,7 @@ The compiled css would be like this:
 ```
 
 ## Please Support Us
-A lot of coffee has been spent making this plugins.
+A lot of coffee has been spent for making this plugins.
 Please buy me a cup of coffee to support me continue to develop & improve this application.
 Visit: [ko-fi.com](https://ko-fi.com/heymarco)
 

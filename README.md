@@ -11,7 +11,7 @@
 ## Installation
 
 ```sh
-npm i tilde-sass
+npm i tilde-sass --save-dev
 ```
 
 ## Usage

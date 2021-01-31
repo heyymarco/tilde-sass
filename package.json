@@ -1,13 +1,77 @@
 {
   "name": "tilde-sass",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A SASS compiler with tilde (~) support for resolving node_modules path and supports new sass' syntax.",
   "main": "dist/index.js",
   "bin": {
     "tilde-sass": "dist/cli.js"
   },
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "cssnano": "^4.1.10",
+    "fibers": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-if": "^3.0.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-util": "^3.0.8",
+    "path": "^0.12.7",
+    "postcss-merge-selectors": "0.0.6",
+    "sass": "^1.32.4"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.0.0",
+    "@types/cssnano": "^4.0.0",
+    "@types/fibers": "^3.1.0",
+    "@types/gulp": "^4.0.8",
+    "@types/gulp-if": "0.0.33",
+    "@types/gulp-postcss": "^8.0.0",
+    "@types/gulp-sass": "^4.0.0",
+    "@types/gulp-util": "^3.0.35",
+    "@types/sass": "^1.16.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors",
+    "test-compress": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --outputStyle compressed",
+
+    "test-watch": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --watch",
+    "test-compress-watch": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --outputStyle compressed --watch"
+  },
+  "cssnano": {
+    "preset": [
+      "default",
+      {
+        "cssDeclarationSorter": true,
+        "rawCache": true,
+        "calc": false,
+        "colormin": true,
+        "convertValues": true,
+        "discardComments": true,
+        "discardDuplicates": true,
+        "discardEmpty": true,
+        "discardOverridden": true,
+        "mergeLonghand": true,
+        "mergeRules": true,
+        "minifyFontValues": true,
+        "minifyGradients": true,
+        "minifyParams": true,
+        "minifySelectors": true,
+        "normalizeCharset": true,
+        "normalizeDisplayValues": true,
+        "normalizePositions": true,
+        "normalizeRepeatStyle": true,
+        "normalizeString": true,
+        "normalizeTimingFunctions": true,
+        "normalizeUnicode": true,
+        "normalizeUrl": true,
+        "normalizeWhitespace": true,
+        "orderedValues": true,
+        "reduceInitial": true,
+        "reduceTransforms": true,
+        "svgo": true,
+        "uniqueSelectors": true
+      }
+    ]
   },
   "repository": {
     "type": "git",
@@ -28,20 +92,5 @@
   "bugs": {
     "url": "https://github.com/heyymarco/tilde-sass/issues"
   },
-  "homepage": "https://github.com/heyymarco/tilde-sass#readme",
-  "dependencies": {
-    "command-line-args": "^5.1.1",
-    "fibers": "^5.0.0",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.1.0",
-    "path": "^0.12.7",
-    "sass": "^1.32.4"
-  },
-  "devDependencies": {
-    "@types/command-line-args": "^5.0.0",
-    "@types/fibers": "^3.1.0",
-    "@types/gulp": "^4.0.8",
-    "@types/gulp-sass": "^4.0.0",
-    "@types/sass": "^1.16.0"
-  }
+  "homepage": "https://github.com/heyymarco/tilde-sass#readme"
 }

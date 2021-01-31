@@ -5,8 +5,11 @@ import compiler from './index';
 
 
 const options = commandLineArgs([
-    { name: 'file',             alias: 'f',  type: String, multiple: false, defaultOption: true },
+    { name: 'file',             alias: 'f', type: String, multiple: false, defaultOption: true },
     { name: 'outFile',          alias: 'o', type: String },
+    { name: 'watch',                        type: Boolean },
+
+    { name: 'mergeSelectors',               type: Boolean },
 
     { name: 'sourceMap',        alias: 'm', type: String },
     { name: 'includePaths',     alias: 'i', type: String },

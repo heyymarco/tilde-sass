@@ -1,6 +1,6 @@
 {
   "name": "tilde-sass",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A SASS compiler with tilde (~) support for resolving node_modules path and supports new sass' syntax.",
   "main": "dist/index.js",
   "bin": {
@@ -16,8 +16,8 @@
     "gulp-sass": "^4.1.0",
     "gulp-util": "^3.0.8",
     "path": "^0.12.7",
-    "postcss-merge-selectors": "0.0.6",
-    "sass": "^1.32.4"
+    "postcss-merge-rules-plus": "^1.0.1",
+    "sass": "^1.32.6"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.0.0",
@@ -32,10 +32,9 @@
   },
   "scripts": {
     "test": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors",
-    "test-compress": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --outputStyle compressed",
-
+    "test-min": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --outputStyle compressed",
     "test-watch": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --watch",
-    "test-compress-watch": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --outputStyle compressed --watch"
+    "test-min-watch": "node dist/cli.js --file test/*.scss --outFile test/ --mergeSelectors --outputStyle compressed --watch"
   },
   "cssnano": {
     "preset": [

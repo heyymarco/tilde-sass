@@ -8,8 +8,7 @@ const gulp_if_1 = __importDefault(require("gulp-if"));
 const gulp_util_1 = __importDefault(require("gulp-util"));
 const gulp_sass_1 = __importDefault(require("gulp-sass"));
 const gulp_postcss_1 = __importDefault(require("gulp-postcss"));
-// @ts-ignore
-const postcss_merge_selectors_1 = __importDefault(require("postcss-merge-selectors"));
+const postcss_merge_rules_plus_1 = __importDefault(require("postcss-merge-rules-plus"));
 const cssnano_1 = __importDefault(require("cssnano"));
 const sass_1 = __importDefault(require("sass"));
 const fibers_1 = __importDefault(require("fibers"));
@@ -29,7 +28,7 @@ function compile(options) {
         // re-compress using postcss+cssnano if --outputStyle compressed
         (options.outputStyle === 'compressed') ? cssnano_1.default() : null,
         // merges selectors having the same properties
-        options.mergeSelectors ? postcss_merge_selectors_1.default() : null,
+        options.mergeSelectors ? postcss_merge_rules_plus_1.default() : null,
     ].filter(p => p !== null);
     let processSass = () => gulp_1.src(options.file)
         .pipe(gulp_sass_1.default(options)

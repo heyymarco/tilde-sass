@@ -1,14 +1,13 @@
 import { watch, src, dest } from 'gulp';
-import gif from 'gulp-if';
-import gutil from 'gulp-util';
-import sass from 'gulp-sass';
-import postcss from 'gulp-postcss';
-// @ts-ignore
-import mergeSelectors from 'postcss-merge-selectors';
-import cssnano from 'cssnano';
-import sassCompiler from 'sass';
-import fiber from 'fibers';
-import path from 'path';
+import gif                  from 'gulp-if';
+import gutil                from 'gulp-util';
+import sass                 from 'gulp-sass';
+import postcss              from 'gulp-postcss'
+import mergeRulePlus        from 'postcss-merge-rules-plus';
+import cssnano              from 'cssnano';
+import sassCompiler         from 'sass';
+import fiber                from 'fibers';
+import path                 from 'path';
 
 
 
@@ -33,7 +32,7 @@ export default function compile(options: any) {
         (options.outputStyle === 'compressed') ? cssnano() : null,
 
         // merges selectors having the same properties
-        options.mergeSelectors ? mergeSelectors() : null,
+        options.mergeSelectors ? mergeRulePlus() : null,
     ].filter(p => p !== null);
 
 

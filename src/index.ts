@@ -1,13 +1,13 @@
-import { watch, src, dest } from 'gulp';
-import gif                  from 'gulp-if';
-import gutil                from 'gulp-util';
-import sass                 from 'gulp-sass';
-import postcss              from 'gulp-postcss'
-import mergeRulePlus        from 'postcss-merge-rules-plus';
-import cssnano              from 'cssnano';
-import sassCompiler         from 'sass';
-import fiber                from 'fibers';
 import path                 from 'path';
+import fiber                from 'fibers';
+import { watch, src, dest } from 'gulp';
+import gutil                from 'gulp-util';
+import gif                  from 'gulp-if';
+import sass                 from 'gulp-sass';
+import sassCompiler         from 'sass';
+import postcss              from 'gulp-postcss'
+import cssnano              from 'cssnano';
+import mergeRulePlus        from 'postcss-merge-rules-plus';
 
 
 

@@ -79,6 +79,8 @@
   "keywords": [
     "sass",
     "compiler",
+    "compression",
+    "minify",
     "css",
     "tilde",
     "node",

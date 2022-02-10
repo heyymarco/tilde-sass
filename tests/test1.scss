@@ -1,0 +1,50 @@
+@use "~@nodestrap/breakpoints/src/index" as breakpoint;
+$my-color: rgba(255, 0, 0, 1);
+$my-font: 'Arial';
+
+
+// define awesome-props via mixin
+@mixin awesome-props {
+    color: red;
+    font-family: 'Arial';
+    opacity: 0.5;
+}
+
+// define awesome-props via placeholder
+%awesome-props {
+    color: red;
+    font-family: 'Arial';
+    opacity: 0.5;
+}
+
+.a {
+    @include awesome-props; // use mixin
+}
+.b {
+    color: blue;
+}
+.c {
+    @extend %awesome-props; // use placeholder
+    background: white;
+}
+.d {
+    @include breakpoint.media-up(xl) {
+        // @extend %awesome-props; // use placeholder => doesn't work! => error: You may not @extend selectors across media queries.
+        @include awesome-props; // use mixin => works!
+    }
+    background: white;
+}
+.e {
+    // hard coded:
+    font-family: $my-font;
+    color: $my-color;
+    opacity: calc(1 / 2);
+
+    background: white;
+}
+.f {
+    @include breakpoint.media-up(xl) {
+        @include awesome-props; // use mixin => works!
+    }
+    background: white;
+}

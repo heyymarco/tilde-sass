@@ -1,10 +1,14 @@
-const { src, dest } = require('gulp');
-const fiber = require('fibers');
-const sass = require('gulp-sass');
-const compiler = require('sass');
-sass.compiler = compiler;
+import { src, dest }   from 'gulp';
+import gulpSass        from 'gulp-sass';
+import sassCompiler    from 'sass';
+import commandLineArgs from 'command-line-args';
+import path from 'path';
 
-const commandLineArgs = require('command-line-args');
+
+
+const sassProcessor = gulpSass(sassCompiler);
+
+
 
 const options = commandLineArgs([
     { name: 'src', alias: 's',  type: String, multiple: false, defaultOption: true },
@@ -12,12 +16,9 @@ const options = commandLineArgs([
 ]);
 
 
-const path = require('path');
-
 src(options.src)
 .pipe(
-    sass({
-        fiber: fiber,
+    sassProcessor({
         importer: (url, prev, done) => {
             console.log(url);
             console.log(prev);
@@ -31,7 +32,7 @@ src(options.src)
             );
         }
     })
-    .on('error', sass.logError)
+    .on('error', sassProcessor.logError)
 )
 .pipe(dest(options.dest))
 ;

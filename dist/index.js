@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
-const fibers_1 = __importDefault(require("fibers"));
+// import fiber                from 'fibers';
 const gulp_1 = require("gulp");
 const gulp_util_1 = __importDefault(require("gulp-util"));
 const gulp_if_1 = __importDefault(require("gulp-if"));
@@ -13,11 +13,9 @@ const sass_1 = __importDefault(require("sass"));
 const gulp_postcss_1 = __importDefault(require("gulp-postcss"));
 const cssnano_1 = __importDefault(require("cssnano"));
 const postcss_merge_rules_plus_1 = __importDefault(require("postcss-merge-rules-plus"));
-//@ts-ignore
-gulp_sass_1.default.compiler = sass_1.default;
+const sassProcessor = (0, gulp_sass_1.default)(sass_1.default);
 function compile(options) {
-    if (!options.fiber)
-        options.fiber = fibers_1.default;
+    // if (!options.fiber) options.fiber = fiber;
     if (!options.importer)
         options.importer = (url, prev) => {
             return ((url[0] === '~') ? {
@@ -26,21 +24,21 @@ function compile(options) {
         };
     let postcssPlugins = [
         // re-compress using postcss+cssnano if --outputStyle compressed
-        (options.outputStyle === 'compressed') ? cssnano_1.default() : null,
+        (options.outputStyle === 'compressed') ? (0, cssnano_1.default)() : null,
         // merges selectors having the same properties
-        options.mergeSelectors ? postcss_merge_rules_plus_1.default() : null,
+        options.mergeSelectors ? (0, postcss_merge_rules_plus_1.default)() : null,
     ].filter(p => p !== null);
-    let processSass = () => gulp_1.src(options.file)
-        .pipe(gulp_sass_1.default(options)
-        .on('error', gulp_sass_1.default.logError))
+    let processSass = () => (0, gulp_1.src)(options.file)
+        .pipe(sassProcessor(options)
+        .on('error', sassProcessor.logError))
         // re-compile using postcss if postcss have any plugins
-        .pipe(gulp_if_1.default(postcssPlugins.length > 0, gulp_postcss_1.default(postcssPlugins)))
+        .pipe((0, gulp_if_1.default)(postcssPlugins.length > 0, (0, gulp_postcss_1.default)(postcssPlugins)))
         .on('error', gulp_util_1.default.log)
-        .pipe(gulp_1.dest(options.outFile));
+        .pipe((0, gulp_1.dest)(options.outFile));
     // compile the sass now:
     processSass();
     // compile the sass in the future: (if --watch option set)
     if (options.watch)
-        gulp_1.watch(options.file, processSass);
+        (0, gulp_1.watch)(options.file, processSass);
 }
 exports.default = compile;

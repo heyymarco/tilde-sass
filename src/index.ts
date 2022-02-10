@@ -1,9 +1,9 @@
 import path                 from 'path';
-import fiber                from 'fibers';
+// import fiber                from 'fibers';
 import { watch, src, dest } from 'gulp';
 import gutil                from 'gulp-util';
 import gif                  from 'gulp-if';
-import sass                 from 'gulp-sass';
+import gulpSass                 from 'gulp-sass';
 import sassCompiler         from 'sass';
 import postcss              from 'gulp-postcss'
 import cssnano              from 'cssnano';
@@ -11,11 +11,12 @@ import mergeRulePlus        from 'postcss-merge-rules-plus';
 
 
 
-//@ts-ignore
-sass.compiler = sassCompiler;
+const sassProcessor = gulpSass(sassCompiler);
+
+
 
 export default function compile(options: any) {
-    if (!options.fiber) options.fiber = fiber;
+    // if (!options.fiber) options.fiber = fiber;
 
     if (!options.importer) options.importer = (url: string, prev: String) => {
         return (
@@ -39,8 +40,8 @@ export default function compile(options: any) {
     let processSass = () =>
         src(options.file as string)
         .pipe(
-            sass(options)
-            .on('error', sass.logError)
+            sassProcessor(options)
+            .on('error', sassProcessor.logError)
         )
         // re-compile using postcss if postcss have any plugins
         .pipe(gif(postcssPlugins.length > 0,

@@ -1,0 +1,22 @@
+.c, .a, .e {
+  color: red;
+  font-family: "Arial";
+  opacity: 0.5;
+}
+
+.b {
+  color: blue;
+}
+
+.c, .d, .e, .f {
+  background: white;
+}
+@media (min-width: 1200px) {
+  .d, .f {
+    color: red;
+    font-family: "Arial";
+    opacity: 0.5;
+  }
+}
+@media (min-width: 1200px) {
+}

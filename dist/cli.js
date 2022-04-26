@@ -18,6 +18,6 @@ const options = (0, command_line_args_1.default)([
     { name: 'indentType', alias: 'n', type: String },
     { name: 'indentWidth', alias: 'w', type: Number },
     { name: 'linefeed', alias: 'l', type: String },
-    { name: 'sourceComments', alias: 'c', type: Boolean },
+    { name: 'sourceComments', alias: 'c', type: Boolean }
 ]);
 (0, index_1.default)(options);

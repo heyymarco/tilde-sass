@@ -19,7 +19,7 @@ const options = commandLineArgs([
     { name: 'indentType',       alias: 'n', type: String },
     { name: 'indentWidth',      alias: 'w', type: Number },
     { name: 'linefeed',         alias: 'l', type: String },
-    { name: 'sourceComments',   alias: 'c', type: Boolean },
+    { name: 'sourceComments',   alias: 'c', type: Boolean }
 ]);
 
 

@@ -4,13 +4,10 @@ import { watch, src, dest } from 'gulp';
 import gutil                from 'gulp-util';
 import gif                  from 'gulp-if';
 import gulpSass                 from 'gulp-sass';
-import sassCompiler         from 'sass';
+import * as sassCompiler         from 'sass-embedded';
 import postcss              from 'gulp-postcss'
 import cssnano              from 'cssnano';
 import mergeRulePlus        from 'postcss-merge-rules-plus';
-
-
-
 const sassProcessor = gulpSass(sassCompiler);
 
 
